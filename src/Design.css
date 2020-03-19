@@ -1,0 +1,16 @@
+.table{
+    height: 55px;
+    width: 300px;
+    background-position: 20px;
+background-color: antiquewhite;
+}
+tr, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 8px;
+    background-color: aqua;
+} 
+td{
+    padding-left: 25px;
+    padding-right: 25px;
+}

@@ -13,6 +13,7 @@ class TableRow extends React.Component {
             </div>
          )
     }
+    
 }
 
 export default TableRow;

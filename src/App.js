@@ -2,10 +2,14 @@ import React from 'react';
 import './App.css';
 import Table from './Table';
 
-
 function App() {
   return (
-    <Table />
+    <div className="Search">
+      <input type="text" placeholder="Search"/>
+      <button> Submit </button>
+      <br /><br />
+      <Table />
+    </div>
   )
 }
 
