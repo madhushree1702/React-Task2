@@ -1,15 +1,10 @@
 import React from 'react';
 import './App.css';
-import Table from './Table';
+import Home from './Home';
 
 function App() {
   return (
-    <div className="Search" align="center">
-      <input type="text" placeholder="Search"/>
-      <button> Submit </button>
-      <br /><br />
-      <Table />
-    </div>
+    <Home />
   )
 }
 

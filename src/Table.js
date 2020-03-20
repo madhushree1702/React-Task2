@@ -3,19 +3,7 @@ import TableRow from './TableRow';
 import './Design.css';
 
 class Table extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      employees : [
-        {id: 1, name: 'Madhushree'},
-        {id: 2, name: 'Priyanka'},
-        {id: 3, name: 'Vaibhavi'},
-        {id: 4, name: 'Pavithra'},
-        {id: 5, name: 'Gomathi'}
-      ]
-    }
-  }
-      
+
   render() {
     return (
       <table align="center">
@@ -40,8 +28,9 @@ class Table extends React.Component {
   }
 
   renderTableData() {
+    var employees = this.props.employees;
     return (
-      this.state.employees.map((employee) => {
+      employees.map((employee) => {
         return (
           <TableRow id={employee.id} name={employee.name}></TableRow>       
         )
