@@ -7,7 +7,7 @@ class Table extends React.Component {
     super(props)
     this.state = {
       employees : [
-        {id: 1, name: 'Khushbu'},
+        {id: 1, name: 'Madhushree'},
         {id: 2, name: 'Priyanka'},
         {id: 3, name: 'Vaibhavi'},
         {id: 4, name: 'Pavithra'},
@@ -18,7 +18,7 @@ class Table extends React.Component {
       
   render() {
     return (
-      <table>
+      <table align="center">
         <thead>
           {this.renderTableHeader()}
         </thead>

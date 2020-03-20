@@ -4,7 +4,7 @@ import Table from './Table';
 
 function App() {
   return (
-    <div className="Search">
+    <div className="Search" align="center">
       <input type="text" placeholder="Search"/>
       <button> Submit </button>
       <br /><br />
