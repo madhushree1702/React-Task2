@@ -1,5 +1,6 @@
 import React from 'react';
 import Table from './Table';
+import { getElementError } from '@testing-library/dom';
 
 
 class Home extends React.Component {
@@ -7,6 +8,7 @@ class Home extends React.Component {
         super(props)
         this.state = {
             newEmployeeName: "",
+        Validmessage: "Enter a valid Name", 
           employees : [
             {id: 1, name: 'Madhushree'},
             {id: 2, name: 'Priyanka'},
@@ -20,7 +22,13 @@ class Home extends React.Component {
     validParams(){
         if(this.state.newEmployeeName != undefined && this.state.newEmployeeName != "") {
             return true
+            this.setState({
+                Validmessage: false
+            })
         } else {
+            this.setState({
+                Validmessage: true
+            })
             return false
         }
     }
@@ -42,12 +50,13 @@ class Home extends React.Component {
     render() {
         return (
             <div className="Search" align="center">
-                <input type="text" placeholder="Search" onChange={(e) => {
+                <input type="text" placeholder="Enter Name" onChange={(e) => {
                   this.setState({
                       newEmployeeName: e.target.value
                   })  
                 }}/>
-                <button onClick={this.triggerSubmit.bind(this)}> Submit </button>
+                <span><b> Add New Row </b> </span>
+                <button onClick={this.triggerSubmit.bind(this)}> ADD </button>
                 <br /><br />
                 <Table employees={this.state.employees} />
             </div>

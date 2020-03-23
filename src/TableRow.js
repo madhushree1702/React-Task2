@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { RBGlyphicon } from 'react-bootstrap'; 
 class TableRow extends React.Component {
 
     render() {
@@ -7,7 +7,8 @@ class TableRow extends React.Component {
                 <tr>
                 <td>{this.props.id}</td>
                 <td>{this.props.name}</td>
-                <td><input class='myclass' type='button' value='Delete'/></td>
+                {/* <td><input class='myclass' type='button' value='Delete'/></td> */}
+                <td><span class="glyphicon glyphicon-trash"></span></td>
                 </tr>
          )
     }
