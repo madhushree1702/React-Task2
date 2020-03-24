@@ -55,7 +55,7 @@ class Home extends React.Component {
                       newEmployeeName: e.target.value
                   })  
                 }}/>
-                <span><b> Add New Row </b> </span>
+                <span><b> Add New Row </b></span>
                 <button onClick={this.triggerSubmit.bind(this)}> ADD </button>
                 <br /><br />
                 <Table employees={this.state.employees} />
