@@ -5,17 +5,18 @@ import trash from '../src/assets/images/valorant/trash.png'
 class TableRow extends React.Component {
 
     render() {
+        var employee = this.props.employee;
         return (
                 <tr>
-                <td>{this.props.id}</td>
-                <td>{this.props.name}</td>
-                <td><img src={trash} /></td>
+                <td>{employee.id}</td>
+                <td>{employee.name}</td>
+                <td><img onClick={this.props.deleteEmployee} src={trash}/></td> 
+                {/* <img onClick={() => { this.onClick(this.props.) }} src={trash} /> */}
                 {/* <td><input class='myclass' type='button' value='Delete'/></td> */} 
-                {/* <td><span class="glyphicon glyphicon-search"></span></td> */}
                 </tr>
          )
     }
-    
+        
 }
 
 export default TableRow;

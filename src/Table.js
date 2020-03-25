@@ -32,7 +32,7 @@ class Table extends React.Component {
     return (
       employees.map((employee) => {
         return (
-          <TableRow id={employee.id} name={employee.name}></TableRow>       
+          <TableRow employee={employee} deleteEmployee={() => this.props.deleteEmployee(employee)}></TableRow>       
         )
       })
     )
