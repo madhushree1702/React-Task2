@@ -1,7 +1,5 @@
 import React from 'react';
 import Table from './Table';
-import { getElementError } from '@testing-library/dom';
-
 
 class Home extends React.Component {
     constructor(props) {
@@ -9,7 +7,10 @@ class Home extends React.Component {
 
         this.state = {
             newEmployeeName: "",
-            Validmessage: "Enter a valid Name",
+            editedEmployee: {
+                id: 0, name: ""
+            },
+            isEditing: false,
             employees : [
                 {id: 1, name: 'Madhushree'},
                 {id: 2, name: 'Priyanka'},
@@ -23,13 +24,7 @@ class Home extends React.Component {
     validParams(){
         if(this.state.newEmployeeName != undefined && this.state.newEmployeeName != "") {
             return true
-            this.setState({
-                Validmessage: false
-            })
         } else {
-            this.setState({
-                Validmessage: true
-            })
             return false
         }
     }
@@ -37,11 +32,16 @@ class Home extends React.Component {
     triggerSubmit(){
         if (this.validParams()){
             var listOfEmployee = this.state.employees
-            var newEmployee = {
-                id: listOfEmployee.length + 1,
-                name: this.state.newEmployeeName
-            }
-            listOfEmployee.push(newEmployee)
+            if (this.state.isEditing) {
+                this.state.editedEmployee.name = this.state.newEmployeeName
+                this.state.isEditing = false
+            } else {
+                var newEmployee = {
+                    id: listOfEmployee.length + 1,
+                    name: this.state.newEmployeeName
+                }
+                listOfEmployee.push(newEmployee)
+            }            
             this.setState({
                 employees: listOfEmployee
             })
@@ -57,19 +57,29 @@ class Home extends React.Component {
         })
     }
 
+    editEmployee = (employee) => {
+        this.setState({
+            isEditing: true,
+            editedEmployee: employee,
+            newEmployeeName: employee.name
+        })
+
+    }
+    
+
     render() {
         return (
             <div align="center"><b> Add New Row </b>
             <div className="Search" align="center">
-                <input type="text" placeholder="Enter Name" onChange={(e) => {
+                <input type="text" placeholder="Enter Name" value={this.state.newEmployeeName} onChange={(e) => {
                   this.setState({
-                      newEmployeeName: e.target.value
+                      newEmployeeName: e.target.value,
                   })  
-                }}/>
+                }} />
                
                 <button onClick={this.triggerSubmit.bind(this)}> ADD </button>
                 <br /><br />
-                <Table employees={this.state.employees} deleteEmployee={this.deleteEmployee} />
+                <Table employees={this.state.employees} deleteEmployee={this.deleteEmployee} editEmployee={this.editEmployee} />
             </div>
             </div>
         )

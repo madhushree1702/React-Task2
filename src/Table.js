@@ -32,7 +32,8 @@ class Table extends React.Component {
     return (
       employees.map((employee) => {
         return (
-          <TableRow employee={employee} deleteEmployee={() => this.props.deleteEmployee(employee)}></TableRow>       
+          <TableRow employee={employee} deleteEmployee={() => this.props.deleteEmployee(employee)} 
+          editEmployee={() => this.props.editEmployee(employee)} /> 
         )
       })
     )
