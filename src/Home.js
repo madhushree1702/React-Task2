@@ -11,6 +11,7 @@ class Home extends React.Component {
                 id: 0, name: ""
             },
             isEditing: false,
+            addButtonText: "ADD",
             employees : [
                 {id: 1, name: 'Madhushree'},
                 {id: 2, name: 'Priyanka'},
@@ -35,6 +36,8 @@ class Home extends React.Component {
             if (this.state.isEditing) {
                 this.state.editedEmployee.name = this.state.newEmployeeName
                 this.state.isEditing = false
+                this.state.newEmployeeName = ""
+                this.state.addButtonText = "ADD"
             } else {
                 var newEmployee = {
                     id: listOfEmployee.length + 1,
@@ -61,7 +64,8 @@ class Home extends React.Component {
         this.setState({
             isEditing: true,
             editedEmployee: employee,
-            newEmployeeName: employee.name
+            newEmployeeName: employee.name,
+            addButtonText: "SAVE"
         })
 
     }
@@ -77,7 +81,7 @@ class Home extends React.Component {
                   })  
                 }} />
                
-                <button onClick={this.triggerSubmit.bind(this)}> ADD </button>
+                <button onClick={this.triggerSubmit.bind(this)}> {this.state.addButtonText} </button>
                 <br /><br />
                 <Table employees={this.state.employees} deleteEmployee={this.deleteEmployee} editEmployee={this.editEmployee} />
             </div>
