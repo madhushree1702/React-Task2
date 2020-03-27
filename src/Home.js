@@ -32,21 +32,28 @@ class Home extends React.Component {
 
     triggerSubmit(){
         if (this.validParams()){
-            var listOfEmployee = this.state.employees
+            var listOfEmployees = this.state.employees
             if (this.state.isEditing) {
                 this.state.editedEmployee.name = this.state.newEmployeeName
                 this.state.isEditing = false
                 this.state.newEmployeeName = ""
                 this.state.addButtonText = "ADD"
             } else {
+
+                listOfEmployees.sort(function(employee1, employee2) {
+                    return employee1.id - employee2.id
+                });
+
+                var lastEmployee = listOfEmployees[listOfEmployees.length - 1]
+
                 var newEmployee = {
-                    id: listOfEmployee.length + 1,
+                    id: lastEmployee.id + 1,
                     name: this.state.newEmployeeName
                 }
-                listOfEmployee.push(newEmployee)
+                listOfEmployees.push(newEmployee)
             }            
             this.setState({
-                employees: listOfEmployee
+                employees: listOfEmployees
             })
         }
     }
